@@ -58,16 +58,12 @@ class USP
 
 			rg_regex = %r{RG\s+([^,]+)}ix
 			rg = rg_regex.match(text).captures
-			rg = rg.first.gsub(/\D/, '')
+			rg = rg.first.gsub(/[^0-9x]/i, '')
 			ret[:rg] = rg
 
 			nusp_regex = %r{USP\s+([^,]+)}ix
 			nusp = nusp_regex.match(text).captures.first
 			ret[:nusp] = nusp
-
-			puts "-----------------"
-			puts text
-			puts "-----------------"
 
 			course_regex = %r{curso\s+d.\s+([^,]+),}ix
 			course = course_regex.match(text).captures.first

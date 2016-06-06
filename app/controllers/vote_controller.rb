@@ -1,4 +1,6 @@
 class VoteController < ApplicationController
+	include VoteHelper
+
 	def index
 	end
 
@@ -23,7 +25,7 @@ class VoteController < ApplicationController
 			@vote = Voto.create(
 					name: resp[:name],
 					nusp: resp[:nusp],
-					rg: resp[:rg],
+					rg: mask_rg(resp[:rg]),
 					course: resp[:course],
 					vote: (params[:vote].to_i != 0)
 			)

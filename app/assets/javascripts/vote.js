@@ -1,4 +1,4 @@
-(function(document) {
+ready = function() {
     'use strict';
 
     var LightTableFilter = (function(Arr) {
@@ -37,4 +37,6 @@
         }
     });
 
-})(document);
+};
+
+$(document).on('page:load ready', ready);
