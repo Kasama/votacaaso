@@ -9,6 +9,7 @@ module VoteHelper
 
 	def mask_rg(rg)
 		r = rg.to_s
+		puts "RG IS : #{rg}"
 		r[2] = '*'
 		r[3] = '*'
 		r[4] = '*'
