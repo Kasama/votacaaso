@@ -17,10 +17,16 @@ class VoteController < ApplicationController
 		v = Voto.find_by_nusp(resp[:nusp])
 		if v
 			# TODO: Test this
-			v.update(voto: (params[:vote].to_i != 0))
+			v.update(vote: (params[:vote].to_i != 0))
 			status = 'alterado'
 		else
-			@vote = Voto.create(name: resp[:name], vote: (params[:vote].to_i != 0), nusp: resp[:nusp], rg: resp[:rg])
+			@vote = Voto.create(
+					name: resp[:name],
+					nusp: resp[:nusp],
+					rg: resp[:rg],
+					course: resp[:course],
+					vote: (params[:vote].to_i != 0)
+			)
 			status = 'computado'
 		end
 		redirect_to results_url, notice: "Seu voto foi #{status} com sucesso! Obrigado"

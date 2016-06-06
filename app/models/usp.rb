@@ -64,6 +64,15 @@ class USP
 			nusp_regex = %r{USP\s+([^,]+)}ix
 			nusp = nusp_regex.match(text).captures.first
 			ret[:nusp] = nusp
+
+			puts "-----------------"
+			puts text
+			puts "-----------------"
+
+			course_regex = %r{curso\s+d.\s+([^,]+),}ix
+			course = course_regex.match(text).captures.first
+			ret[:course] = course
+
 			ret
 		end
 

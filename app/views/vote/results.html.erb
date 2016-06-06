@@ -33,12 +33,14 @@
 					<th><%= 'Nome' %></th>
 					<th><%= 'N° USP' %></th>
 					<th><%= 'RG' %></th>
+					<th><%= 'Curso' %></th>
 					<th><%= 'Voto' %></th>
 				</tr>
 			</thead>
 			<tbody>
 				<% if @votes.blank? %>
 					<tr>
+						<td>-</td>
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
@@ -50,6 +52,7 @@
 							<td><%= v.name %></td>
 							<td><%= mask_nusp v.nusp %></td>
 							<td><%= mask_rg v.rg %></td>
+							<td><%= v.course %></td>
 							<td><%= v.vote ? 'Sim' : 'Não' %></td>
 						</tr>
 					<% end %>
