@@ -1,0 +1,47 @@
+<div class="jumbotron text-center">
+	<h1>Votação</h1>
+	<p>Essa página é um portal para votação de uma possível greve dos alunos do Caaso</p>
+</div>
+
+
+<% code_lbl =
+	"Digite o código de verificação do atestado ".html_safe +
+	"de matrícula emitido pelo JupiterWeb. " +
+	"#{link_to 'O que é isso?', '#',
+	data: { toggle: 'modal', target: '#myModal' }}".html_safe
+%>
+
+<% vote_text = "Você gostaria que houvesse greve dos alunos?" %>
+
+<%= bootstrap_form_tag url: vote_url do |f| %>
+	<%= f.form_group :vote, label: { text: vote_text } do %>
+		<%= f.radio_button :vote, 0, label: "Não", inline: true, checked: true %>
+		<%= f.radio_button :vote, 1, label: "Sim", inline: true %>
+	<% end %>
+	<%= f.text_field :code, placeholder: 'XXXX-XXXX-XXXX-XXXX', label: code_lbl %>
+	<%= image_tag captcha_url, class: 'img-rounded img-responsive' %>
+	<%= f.text_field :chars, label: 'Digite os caracteres da imagem acima' %>
+	<%= f.submit 'Votar' %>
+<% end %>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Ajuda</h4>
+			</div>
+			<div class="modal-body">
+				<p>Esse é o código de verificação (no formato XXXX-XXXX-XXXX-XXXX) do atestado de matrícula gerado pelo JupiterWeb (JupiterWeb -&gt; Login -&gt; Emissão de documentos -&gt; atestado de matrícula) o código de verificação pode ser encontrado na parte de baixo do documento.</p>
+				<p>para mais informações leia a página de <%= link_to help_url do 'ajuda' end %></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,59 @@
+<% yes = @votes.where(vote: true) || [] %>
+<% yes = yes.size %>
+<% no = @votes.where(vote: false) || [] %>
+<% no = no.size %>
+<h4>Resumo dos votos:</h4>
+<div class="container-fluid table-responsive">
+	<table class="table table-striped">
+		<tr>
+			<th>Total</th>
+			<th>Sim</th>
+			<th>Não</th>
+		</tr>
+
+		<tr>
+			<td><%= @votes.size %></td>
+			<td><%= yes %> (<%= yes/@votes.size * 100 %>%)</td>
+			<td><%= no %> (<%= no/@votes.size * 100 %>%)</td>
+		</tr>
+	</table>
+</div>
+<hr />
+<h4>Detalhes de cada voto:</h4>
+<div class="container-fluid">
+	<div class="table-responsive">
+		<div class="search-namespace">
+			<input type="search" class="light-table-filter form-control" data-table="order-table" placeholder="<%= 'filtro' %>" />
+		</div>
+		<table class="table table-striped order-table">
+
+			<thead>
+				<tr>
+					<th><%= 'Nome' %></th>
+					<th><%= 'N° USP' %></th>
+					<th><%= 'RG' %></th>
+					<th><%= 'Voto' %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @votes.blank? %>
+					<tr>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+				<% else %>
+					<% @votes.each do |v| %>
+						<tr>
+							<td><%= v.name %></td>
+							<td><%= mask_nusp v.nusp %></td>
+							<td><%= mask_rg v.rg %></td>
+							<td><%= v.vote ? 'Sim' : 'Não' %></td>
+						</tr>
+					<% end %>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
