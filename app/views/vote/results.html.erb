@@ -1,3 +1,4 @@
+<% nvotes = @votes.size %>
 <% yes = @votes.where(vote: true) || [] %>
 <% yes = yes.size %>
 <% no = @votes.where(vote: false) || [] %>
@@ -12,9 +13,9 @@
 		</tr>
 
 		<tr>
-			<td><%= @votes.size %></td>
-			<td><%= yes %> (<%= yes/@votes.size * 100 %>%)</td>
-			<td><%= no %> (<%= no/@votes.size * 100 %>%)</td>
+			<td><%= nvotes %></td>
+			<td><%= yes %> (<%= yes/((nvotes == 0) ? 1 : nvotes) * 100 %>%)</td>
+			<td><%= no %> (<%= no/((nvotes == 0) ? 1 : nvotes) * 100 %>%)</td>
 		</tr>
 	</table>
 </div>
