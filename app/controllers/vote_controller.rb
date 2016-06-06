@@ -1,6 +1,4 @@
 class VoteController < ApplicationController
-	include VoteHelper
-
 	def index
 	end
 
@@ -42,4 +40,7 @@ class VoteController < ApplicationController
 		send_data captcha, type: 'image/png', disposition: 'inline'
 	end
 
+		private
+
+	include VoteHelper
 end
