@@ -55,7 +55,20 @@
 							<td><%= v.rg %></td>
 							<td><%= v.course %></td>
 							<td class="vote-opinion"><%= v.vote ? 'Sim' : 'Não' %></td>
-							<td><%= link_to 'Ler', '#', {class: 'btn btn-sm btn-default text-center read-reason', data: {toggle: 'modal', target: '#myModal', header: "Justificativa de #{v.name}", body: v.reason}} %></td>
+							<td>
+								<% if v.reason.to_s.empty? %>
+									-
+								<% else %>
+									<%= link_to 'Ler', '#', {
+									class: 'btn btn-sm btn-default text-center read-reason',
+									data: {
+										toggle: 'modal',
+										target: '#myModal',
+										header: "Justificativa de #{v.name}",
+										body: v.reason
+									}} %>
+								<% end %>
+							</td>
 						</tr>
 					<% end %>
 				<% end %>
