@@ -16,8 +16,10 @@ class VoteController < ApplicationController
 		return redirect_to root_url, notice: 'Captcha ou código de verificação inválidos' unless resp
 		v = Voto.find_by_nusp(resp[:nusp])
 		if v
-			# TODO: Test this
-			v.update(vote: (params[:vote].to_i != 0))
+			update = {vote: (params[:vote].to_i != 0)}
+			reason = params[:reason]
+			update[:reason] = reason unless reason.nil? || reason.empty?
+			v.update(update)
 			status = 'alterado'
 		else
 			@vote = Voto.create(
@@ -25,6 +27,7 @@ class VoteController < ApplicationController
 					nusp: resp[:nusp],
 					rg: mask_rg(resp[:rg]),
 					course: resp[:course],
+					reason: params[:reason],
 					vote: (params[:vote].to_i != 0)
 			)
 			status = 'computado'
