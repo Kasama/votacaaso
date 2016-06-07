@@ -3,7 +3,9 @@ Vota Caaso
 
 Objetivo
 --------
-O Objetivo dessa aplicação é servir como uma forma democrática de computar votos a favor e contra uma possível greve do Caaso.
+O Objetivo desse app é oferecer um complemento democrático à assembleia do Caaso.
+
+Será possível colocar para votação aberta todas as pautas colocadas na assembleia, todos os votos serão somados e somente alunos de graduação da USP São Carlos poderão votar
 
 Funcionamento
 -------------

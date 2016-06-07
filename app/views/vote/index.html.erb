@@ -1,7 +1,12 @@
+<i id="page-name" data-page="votar"></i>
 <div class="wrapper">
 	<div class="jumbotron text-center">
 		<h1>Votação</h1>
-		<p>Esta página é um portal para votação de uma possível greve dos alunos do Caaso</p>
+		<p>Esta página é um portal para votação de pautas aceitas na Assembleia do Caaso</p>
+	</div>
+	<div class="panel panel-danger">
+		<div class="panel-heading"> Atenção! </div>
+		<div class="panel-body"> Essa página não é de forma alguma relacionada com a direção do Caaso, as informações contidas aqui não refletem as opiniões da instituição </div>
 	</div>
 
 
@@ -13,11 +18,16 @@
 	%>
 	<p>Atenção: Tome uma decisão informada.<br/>
 	Na página de <%= link_to 'Resultados', results_url %> é possível ler a justificativa de quem já votou.<br/>
-	Use o filtro na parte de cima da tabela para buscar por pessoas ou opiniões.</p>
+	Use o filtro na parte de cima da tabela para buscar por pessoas, institutos ou opiniões.</p>
 
-	<% vote_text = "Você gostaria que houvesse greve dos alunos?" %>
+	<% vote_text = "Você é a favor da pauta acima?" %>
+	<% ruling = "Greve dos Alunos" %>
 
 	<%= bootstrap_form_tag url: vote_url do |f| %>
+		<div class="panel panel-default">
+			<div class="panel-heading"> Pauta atual </div>
+			<div class="panel-body"><%= ruling.to_s %></div>
+		</div>
 		<%= f.form_group :vote, label: { text: vote_text } do %>
 			<%= f.radio_button :vote, 0, label: "Não", inline: true, checked: true %>
 			<%= f.radio_button :vote, 1, label: "Sim", inline: true %>

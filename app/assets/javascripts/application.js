@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap.min
+
+$(document).ready(function(){
+	var selector = '#' + $("#page-name").data('page') + '-menu';
+	$(selector).addClass('active');
+});

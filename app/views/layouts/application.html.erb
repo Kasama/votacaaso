@@ -8,7 +8,7 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<nav class="navbar navbar-inverse navbar-static-top ">
+		<nav class="navbar navbar-inverse navbar-static-top" >
 			<div class="container">
 				<div class="navbar-header">
 					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,9 +24,9 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav text-right text-capitalize">
-					<li><%= link_to root_url do 'Votar' end %></li>
-					<li><%= link_to results_url do 'Resultados' end %></li>
-					<li><%= link_to help_url do 'Ajuda' end %></li>
+					<li id="votar-menu"><%= link_to root_url do 'Votar' end %></li>
+					<li id="results-menu"><%= link_to results_url do 'Resultados' end %></li>
+					<li id="help-menu"><%= link_to help_url do 'Ajuda' end %></li>
 				</ul>
 			</div>
 			<!--/.navbar-collapse -->
