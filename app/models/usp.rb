@@ -52,6 +52,10 @@ class USP
 			text = read_pdf pdf
 			return false unless %r{atestado(:?\s+de\s+matr[i|Í]cula)?}i =~ text
 
+			institute_regex = %r{\s+(.+?)\s+\n+\s+atestado}ix
+			institute = institute_regex.match(text).captures.first
+			ret[:institute] = institute
+
 			name_regex = %r{,\s+que\s+([^,]+),}ix
 			name = name_regex.match(text).captures.first
 			ret[:name] = name

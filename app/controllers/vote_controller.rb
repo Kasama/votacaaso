@@ -17,7 +17,7 @@ class VoteController < ApplicationController
 		v = Voto.find_by_nusp(resp[:nusp])
 		if v
 			update = {vote: (params[:vote].to_i != 0)}
-			reason = params[:reason]
+			reason = params[:reason].chomp.strip
 			update[:reason] = reason unless reason.nil? || reason.empty?
 			v.update(update)
 			status = 'alterado'
@@ -27,7 +27,8 @@ class VoteController < ApplicationController
 					nusp: resp[:nusp],
 					rg: mask_rg(resp[:rg]),
 					course: resp[:course],
-					reason: params[:reason],
+					institute: resp[:institute],
+					reason: params[:reason].chomp.strip,
 					vote: (params[:vote].to_i != 0)
 			)
 			status = 'computado'

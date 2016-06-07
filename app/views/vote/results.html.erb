@@ -32,7 +32,7 @@
 					<th><%= 'Nome' %></th>
 					<th><%= 'N° USP' %></th>
 					<th><%= 'RG' %></th>
-					<th><%= 'Curso' %></th>
+					<th><%= 'Instituto' %></th>
 					<th><%= 'Voto' %></th>
 					<th><%= 'Justificativa' %></th>
 				</tr>
@@ -53,7 +53,7 @@
 							<td class="vote-name"><%= v.name %></td>
 							<td><%= mask_nusp v.nusp %></td>
 							<td><%= v.rg %></td>
-							<td><%= v.course %></td>
+							<td><%= v.institute %></td>
 							<td class="vote-opinion"><%= v.vote ? 'Sim' : 'Não' %></td>
 							<td>
 								<% if v.reason.to_s.empty? %>
