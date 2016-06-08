@@ -1,8 +1,9 @@
 [Importante]
-Boa noite colegas do Caaso, eu fiz uma aplicação web para complementar o trabalho da assembleia. O objetivo dela é ser uma plataforma aberta e segura para que todos os alunos do Caaso possam se posicionar sobre as pautas colocadas nas assembleias.
-Os dados coletados devem ser usados apenas como dados estatísticos, sem nenhum valor deliberativo real.
+Boa noite colegas do Caaso, eu fiz uma aplicação web para complementar o trabalho da assembleia. O objetivo dela não é substituir o sistema atual, mas sim ser uma plataforma aberta e segura para que todos os alunos do Caaso possam se posicionar sobre as pautas colocadas nas assembleias.
+A aplicação verifica a autenticidade dos alunos pelo sistma da USP, de forma que apenas alunos possam usá-lo.
+Os dados coletados devem ser usados apenas para fins estatísticos, sem nenhum valor deliberativo real.
 Além de dizer se é a favor ou contra, também é possível adicionar uma justificativa para sua posição. Qualquer um pode ler esses argumentos para formar uma opinião baseada neles.
-Atualmente, a única pauta disponível é a de uma possível greve dos estudantes, pois essa pauta está confirmada.
+Atualmente, a única pauta disponível é a de uma possível greve dos estudantes, pois essa pauta está confirmada para a assembleia de quarta feira (08/06).
 Seria interessante que todos se posicionassem. Obrigado.
 
 A aplicação pode ser acessada no site: http://votacaaso.herokuapp.com/
@@ -10,3 +11,5 @@ Mais informações de segurança e privacidade podem ser encontradas junto ao c�
 O código fonte da aplicação também está disponível e pode ser acessado em: http://github.com/Kasama/votacaaso
 
 Lembrete: Essa aplicação não foi endorsada de forma alguma pelo Caaso.
+
+----------
