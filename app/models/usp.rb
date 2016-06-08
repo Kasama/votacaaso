@@ -60,7 +60,7 @@ class USP
 			name = name_regex.match(text).captures.first
 			ret[:name] = name
 
-			rg_regex = %r{RG|milit\s+([^,]+)}ix
+			rg_regex = %r{RG\s+([^,]+)}ix
 			rg = rg_regex.match(text).captures
 			rg = rg.first.gsub(/[^0-9x]/i, '')
 			ret[:rg] = rg
