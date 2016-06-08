@@ -29,7 +29,8 @@
 			<div class="panel-body"><%= ruling.to_s %></div>
 		</div>
 		<%= f.form_group :vote, label: { text: vote_text } do %>
-			<%= f.radio_button :vote, 0, label: "Não", inline: true, checked: true %>
+			<%= f.radio_button :vote, 0, label: "Não", inline: true %>
+			<%= f.radio_button :vote, 2, label: "Abstenção", inline: true, checked: true %>
 			<%= f.radio_button :vote, 1, label: "Sim", inline: true %>
 		<% end %>
 		<%= f.text_field :code, placeholder: 'XXXX-XXXX-XXXX-XXXX', label: code_lbl %>

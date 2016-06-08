@@ -15,8 +15,17 @@ class VoteController < ApplicationController
 		resp = USP.verify(cookie, captcha, params[:code].chomp.strip)
 		return redirect_to root_url, notice: 'Captcha ou código de verificação inválidos' unless resp
 		v = Voto.find_by_nusp(resp[:nusp])
+		puts "vote is #{params[:vote]} to i #{params[:vote].to_i}"
+		vote =  case params[:vote].to_i
+						when 0
+							false
+						when 1
+							true
+						else
+							nil
+						end
 		if v
-			update = {vote: (params[:vote].to_i != 0)}
+			update = {vote: vote}
 			reason = params[:reason].chomp.strip
 			update[:reason] = reason unless reason.nil? || reason.empty?
 			v.update(update)
@@ -29,7 +38,7 @@ class VoteController < ApplicationController
 					course: resp[:course],
 					institute: resp[:institute],
 					reason: params[:reason].chomp.strip,
-					vote: (params[:vote].to_i != 0)
+					vote: vote
 			)
 			status = 'computado'
 		end
