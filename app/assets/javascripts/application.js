@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap.min
-//= require responsive-bootstrap.min
 
 $(document).ready(function(){
 	var selector = '#' + $("#page-name").data('page') + '-menu';
