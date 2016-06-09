@@ -6,4 +6,5 @@ $(document).on('page:load ready', function(){
 		info: false,
 		scrollx: false
 	});
+	$('[data-toggle="popover"]').popover();
 });

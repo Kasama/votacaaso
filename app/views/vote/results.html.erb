@@ -56,7 +56,11 @@
 						<td class="vote-name"><%= v.name %></td>
 						<td><%= mask_nusp v.nusp %></td>
 						<td><%= v.rg %></td>
-						<td><%= v.institute %></td>
+						<td>
+						<span data-toggle="popover" data-trigger="hover"  title="Curso" data-content="<%= v.course %>" data-placement="top" >
+							<%= v.institute %>
+						</span>
+						</td>
 						<% if v.vote.nil? %>
 							<% vote = 'Abstenção' %>
 						<% else %>
