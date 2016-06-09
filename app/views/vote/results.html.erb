@@ -29,13 +29,13 @@
 	<div class="search-namespace">
 		<input type="search" class="light-table-filter form-control" data-table="order-table" placeholder="<%= 'filtro' %>" />
 	</div>
-	<table id="vote-table" class="table table-striped table-responsive order-table">
+	<table id="vote-table" class="table table-striped order-table">
 		<thead>
 			<tr>
 				<th><%= 'Nome' %></th>
 				<th><%= 'N° USP' %></th>
 				<th><%= 'RG' %></th>
-				<th><%= 'Instituto' %></th>
+				<th><%= 'Curso' %></th>
 				<th><%= 'Voto' %></th>
 				<th><%= 'Justificativa' %></th>
 			</tr>
@@ -57,9 +57,8 @@
 						<td><%= mask_nusp v.nusp %></td>
 						<td><%= v.rg %></td>
 						<td>
-						<span data-toggle="popover" data-trigger="hover"  title="Curso" data-content="<%= v.course %>" data-placement="top" >
-							<%= v.institute %>
-						</span>
+							<% institute = INSTITUTE_ABBREV[v.institute] ? INSTITUTE_ABBREV[v.institute] : v.institute %>
+							<%= "#{institute} - #{v.course}" %>
 						</td>
 						<% if v.vote.nil? %>
 							<% vote = 'Abstenção' %>

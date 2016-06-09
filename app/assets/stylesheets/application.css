@@ -15,6 +15,7 @@
  *= require bootstrap.min
  *= require rails_bootstrap_forms
  *= require checkbox
+ *= require responsive-bootstrap.min
  */
 
 .wrapper {

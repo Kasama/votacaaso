@@ -4,7 +4,9 @@ $(document).on('page:load ready', function(){
 		ordering: true,
 		searching: false,
 		info: false,
+		responsive: false,
 		scrollx: false
 	});
 	$('[data-toggle="popover"]').popover();
+	$('table').wrap('<div class="table-responsive"></div>');
 });
