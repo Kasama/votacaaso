@@ -1,5 +1,6 @@
 class VoteController < ApplicationController
 	def index
+		@saved = params
 	end
 
 	def help
@@ -13,9 +14,8 @@ class VoteController < ApplicationController
 		cookie = session[:current_user_id]
 		captcha = params[:chars].strip
 		resp = USP.verify(cookie, captcha, params[:code].chomp.strip)
-		return redirect_to root_url, notice: 'Captcha ou código de verificação inválidos' unless resp
-		v = Voto.find_by_nusp(resp[:nusp])
-		puts "vote is #{params[:vote]} to i #{params[:vote].to_i}"
+		return redirect_to root_url(params.permit(:code, :reason, :vote)),
+			notice: 'Captcha ou código de verificação inválidos' unless resp
 		vote =  case params[:vote].to_i
 						when 0
 							false
@@ -24,6 +24,7 @@ class VoteController < ApplicationController
 						else
 							nil
 						end
+		v = Voto.find_by_nusp(resp[:nusp])
 		if v
 			update = {vote: vote}
 			reason = params[:reason].chomp.strip
