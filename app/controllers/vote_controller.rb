@@ -39,7 +39,7 @@ class VoteController < ApplicationController
 					rg: mask_rg(resp[:rg]),
 					course: resp[:course],
 					institute: resp[:institute],
-					reason: params[:reason].chomp.strip,
+					reason: params[:reason].chomp.strip.gsub(/\r\n?/, "\n"),
 					vote: vote
 			)
 			status = 'computado'
