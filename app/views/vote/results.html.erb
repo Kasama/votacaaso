@@ -1,11 +1,8 @@
 <i id="page-name" data-page="results"></i>
 <% nvotes = @votes.size %>
-<% yes = @votes.where(vote: true) || [] %>
-<% yes = yes.size %>
-<% no = @votes.where(vote: false) || [] %>
-<% no = no.size %>
-<% abs = @votes.where(vote: nil) || [] %>
-<% abs = abs.size %>
+<% yes = @votes.where(vote: true).count %>
+<% no = @votes.where(vote: false).count %>
+<% abs = @votes.where(vote: nil).count %>
 <h4>Resumo dos votos:</h4>
 <div class="container-fluid table-responsive">
 	<table class="table table-striped">
@@ -17,10 +14,37 @@
 		</tr>
 		<tr>
 			<td><%= nvotes.to_s %></td>
-			<td><%= yes.to_s %> (<%= sprintf('%.2f', yes.to_f/((nvotes == 0) ? 1 : nvotes) * 100) %>%)</td>
-			<td><%= abs.to_s %> (<%= sprintf('%.2f', abs.to_f/((nvotes == 0) ? 1 : nvotes) * 100) %>%)</td>
-			<td><%= no.to_s %> (<%= sprintf('%.2f', no.to_f/((nvotes == 0) ? 1 : nvotes) * 100) %>%)</td>
+			<td><%= yes.to_s %> (<%= (yes.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
+			<td><%= abs.to_s %> (<%= (abs.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
+			<td><%= no.to_s %> (<%= (no.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
 		</tr>
+	</table>
+</div>
+<hr />
+<h4>Resumo por instituto:</h4>
+<div class="container-fluid table-responsive">
+	<table class="table table-striped">
+		<tr>
+			<th>Instituto</th>
+			<th>Total</th>
+			<th>Sim</th>
+			<th>Abstenções</th>
+			<th>Não</th>
+		</tr>
+		<% @institutes.each do |institute| %>
+			<tr>
+				<td><%= institute.institute %></td>
+				<% votes = @votes.where(institute: institute.institute) %>
+				<% nvotes = votes.size %>
+				<% yes = votes.where(vote: true).count %>
+				<% no = votes.where(vote: false).count %>
+				<% abs = votes.where(vote: nil).count %>
+				<td><%= nvotes.to_s %></td>
+				<td><%= yes.to_s %> (<%= (yes.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
+				<td><%= no.to_s %> (<%= (no.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
+				<td><%= abs.to_s %> (<%= (abs.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
+			</tr>
+		<% end %>
 	</table>
 </div>
 <hr />
@@ -34,7 +58,7 @@
 			<tr>
 				<th><%= 'Nome' %></th>
 				<th><%= 'N° USP' %></th>
-				<th><%= 'RG' %></th>
+				<th><%= 'Horario' %></th>
 				<th><%= 'Curso' %></th>
 				<th><%= 'Voto' %></th>
 				<th><%= 'Justificativa' %></th>
@@ -55,7 +79,7 @@
 					<tr id="row-<%= i.to_s %>">
 						<td class="vote-name"><%= v.name %></td>
 						<td><%= mask_nusp v.nusp %></td>
-						<td><%= v.rg %></td>
+						<td><%= v.updated_at.in_time_zone("Brasilia").strftime('%d/%m %H:%M') %></td>
 						<td>
 							<% institute = INSTITUTE_ABBREV[v.institute] ? INSTITUTE_ABBREV[v.institute] : v.institute %>
 							<%= "#{institute} - #{v.course}" %>

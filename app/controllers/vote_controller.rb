@@ -7,6 +7,7 @@ class VoteController < ApplicationController
 	end
 
 	def results
+		@institutes = Voto.select(:institute).distinct
 		@votes = Voto.all
 	end
 
