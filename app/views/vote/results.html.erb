@@ -41,8 +41,8 @@
 				<% abs = votes.where(vote: nil).count %>
 				<td><%= nvotes.to_s %></td>
 				<td><%= yes.to_s %> (<%= (yes.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
-				<td><%= no.to_s %> (<%= (no.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
 				<td><%= abs.to_s %> (<%= (abs.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
+				<td><%= no.to_s %> (<%= (no.to_f/((nvotes == 0) ? 1 : nvotes) * 100).to_s(:percentage, precision: 2) %>)</td>
 			</tr>
 		<% end %>
 	</table>
