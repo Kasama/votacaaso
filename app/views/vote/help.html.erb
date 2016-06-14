@@ -1,25 +1,40 @@
 <i id="page-name" data-page="help"></i>
-<h3>Como encontrar o Código de Controle</h3>
+<% i = 0 %>
 
-<p>Primeiramente abra o site do <%= link_to 'JupiterWeb', 'https://uspdigital.usp.br/jupiterweb/' %> e aperte o botão 'Entrar'.</p>
-<%= image_tag(image_url('Entrar.png'), class: 'img-rounded') %>
-<hr/>
-<p>Coloque seu número USP e sua senha única nos campos indicados e prossiga apertando o botão 'Entrar'.</p>
-<%= image_tag(image_url('Login.png'), class: 'img-rounded') %>
-<hr/>
-<p>No menu ao lado esquerdo, selecione 'Emissão de Documentos' e 'Documentos'.</p>
-<%= image_tag(image_url('Documentos.png'), class: 'img-rounded') %>
-<hr/>
-<p>Na última caixa de seleção, escolha 'Atestado de Matrícula' e pressione o botão 'Gerar'.</p>
-<%= image_tag(image_url('SelecionaAtestado.png'), class: 'img-rounded') %>
-<hr/>
-<p>O documento deve aparecer na sua tela, ou ser baixado para seu computador.</p>
-<p>O código está no local indicado na imagem abaixo</p>
-<%= image_tag(image_url('Atestado.png'), class: 'img-rounded') %>
-<hr/>
-
-<h3>Como votar</h3>
-<p>Ao abrir a página principal desse aplicativo, basta selecionar sua opção de voto (Sim ou Não), preencher o campo do código de controle com um código válido e digitar os caracteres da imagem no campo apropriado</p>
-<p>Se desejar deixar seus argumentos para ajudar quem não tem uma opinião formada, preencha o campo Justificativa com um texto explicativo (Tente ser o mais sucinto quanto possível)</p>
+<h2>FAQ - Perguntas Frequentes</h2>
+<div class="panel-group" id="faq">
+	<%= render :layout => 'accordion_part', locals: { parent: 'faq', i: i = i + 1, title: 'Como encontrar o Código de Controle' } do %>
+		<p>Primeiramente abra o site do <%= link_to 'JupiterWeb', 'https://uspdigital.usp.br/jupiterweb/' %> e aperte o botão 'Entrar'.</p>
+		<%= image_tag(image_url('Entrar.png'), class: 'img-rounded') %>
+		<hr/>
+		<p>Coloque seu número USP e sua senha única nos campos indicados e prossiga apertando o botão 'Entrar'.</p>
+		<%= image_tag(image_url('Login.png'), class: 'img-rounded') %>
+		<hr/>
+		<p>No menu ao lado esquerdo, selecione 'Emissão de Documentos' e 'Documentos'.</p>
+		<%= image_tag(image_url('Documentos.png'), class: 'img-rounded') %>
+		<hr/>
+		<p>Na última caixa de seleção, escolha 'Atestado de Matrícula' e pressione o botão 'Gerar'.</p>
+		<%= image_tag(image_url('SelecionaAtestado.png'), class: 'img-rounded') %>
+		<hr/>
+		<p>O documento deve aparecer na sua tela, ou ser baixado para seu computador.</p>
+		<p>O código está no local indicado na imagem abaixo</p>
+		<%= image_tag(image_url('Atestado.png'), class: 'img-rounded') %>
+	<% end %>
+	<%= render :layout => 'accordion_part', locals: { parent: 'faq', i: i = i + 1, title: 'Como votar' } do %>
+		<p>Ao abrir a página principal desse aplicativo, basta selecionar sua opção de voto (Sim ou Não), preencher o campo do código de controle com um código válido e digitar os caracteres da imagem no campo apropriado</p>
+		<p>Se desejar deixar seus argumentos para ajudar quem não tem uma opinião formada, preencha o campo Justificativa com um texto explicativo (Tente ser o mais sucinto quanto possível)</p>
+	<% end %>
+	<%= render :layout => 'accordion_part', locals: { parent: 'faq', i: i = i + 1, title: 'Meu instituto está sendo recusado' } do %>
+		<p>Uma possibilidade é que seu instituto não pertence à USP de São Carlos.</p>
+		<p>Se esse não for o caso, favor comunicar esse problema ao Roberto Alegro em um dos meios de comunicação abaixo:</p>
+		<ul>
+		<li><a href="https://telegram.me/Kasama">@Kasama - Telegram</a></li>
+		<li><a href="https://www.facebook.com/roberto.alegro">Roberto Alegro - Facebook</a></li>
+		<li><a href="https://github.com/Kasama/votacaaso/issues">Canal de Issues - Github</a></li>
+		<li><a href="mailto:roberto.alegro@usp.br">Email</a></li>
+		</ul>
+	<% end %>
+</div>
+<div class="push"></div>
 
 <%= render "footer" %>

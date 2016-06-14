@@ -17,6 +17,10 @@ class VoteController < ApplicationController
 		resp = USP.verify(cookie, captcha, params[:code].chomp.strip)
 		return redirect_to root_url(params.permit(:code, :reason, :vote)),
 			notice: 'Captcha ou código de verificação inválidos' unless resp
+		unless INSTITUTE_ABBREV[resp[:institute]]
+			return redirect_to root_url(params.permit(:code, :reason, :vote)),
+				notice: 'Seu instituto foi recusado, leia a página de ajuda para mais informações'
+		end
 		vote =  case params[:vote].to_i
 						when 0
 							false

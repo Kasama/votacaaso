@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+			<a href="#accordion-part-<%= i %>" data-toggle="collapse" data-parent="#<%= parent %>"><%= i %>. <%= title %></a>
+		</h4>
+	</div>
+	<div class="panel-collapse collapse out container-fluid" id="accordion-part-<%= i %>">
+		<%= yield %>
+	</div>
+</div>

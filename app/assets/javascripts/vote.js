@@ -38,12 +38,6 @@ ready = function() {
 		}
 	});
 
-	//----------- View vote reason
-	$('.read-reason').click(function() {
-		$('#modal-head').text($(this).data('header'));
-		$('#modal-text').text($(this).data('body')).replace(/\r?\n?/g, '<br />'));
-	});
-
 };
 
 $(document).on('page:load ready', ready);
