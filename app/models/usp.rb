@@ -50,13 +50,15 @@ class USP
 		def parse_pdf(pdf)
 			ret = {}
 			text = read_pdf pdf
-			return false unless %r{atestado(:?\s+de\s+matr[i|Í]cula)?}i =~ text
+			return false unless %r{atestado(:?\s+de\s+matr[i|í]cula)?}i =~ text
 
-			institute_regex = %r{\s+(.+?)\s+\n+\s+atestado}ix
+			#institute_regex = %r{\s+(.+?)\s+\n+\s+atestado}ix
+      institute_regex = %r{unidade:?\s+\d+\s+-\s+(.+?)\n}ix
 			institute = institute_regex.match(text).captures.first
 			ret[:institute] = institute
 
-			name_regex = %r{,\s+que\s+([^,]+),}ix
+			#name_regex = %r{,\s+que\s+([^,]+),}ix
+      name_regex = %r{aluno:\s+\S+\s+-\s+(.+?)\n}ix
 			name = name_regex.match(text).captures.first
 			ret[:name] = name
 
